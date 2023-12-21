@@ -25,22 +25,15 @@ fn main() {
         }
     };
     let n = n + 1;
-    println!("");
 
     let mut ans: Vec<u32> = Vec::new();
 
     for i in 0..n {
         let fi = fib(i);
         ans.push(fi);
-        // println!("Fibonacci[{i}] = {}", fi);
     }
 
-    let ans: String = ans
-        .iter()
-        .map(|i| i.to_string())
-        .collect::<Vec<String>>()
-        .join(", ");
-    println!("{}", ans);
+    println!("\n{:?}", ans);
 }
 
 fn fib(i: u32) -> u32 {
