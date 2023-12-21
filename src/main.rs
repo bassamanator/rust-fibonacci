@@ -4,23 +4,16 @@ fn main() {
     println!("Which Fibonacci number would you like to see to?");
 
     print!("[Enter index:] ");
-    io::stdout().flush().expect("Erroring flushing");
+    io::stdout().flush().expect("Error flushing");
 
     let mut n = String::new();
 
     io::stdin().read_line(&mut n).expect("Failed to read line");
 
     let n: u32 = match n.trim().parse() {
-        Ok(num) => {
-            if num > 0 {
-                num
-            } else {
-                println!("Halt! Not a positive integer value.");
-                return;
-            }
-        }
+        Ok(num) => num,
         Err(_) => {
-            println!("Halt! Not a number.");
+            println!("Invalid input");
             return;
         }
     };
