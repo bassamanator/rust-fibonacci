@@ -1,9 +1,10 @@
-use std::io;
+use std::io::{self, Write};
 
 fn main() {
     println!("Which Fibonacci number would you like to see to?");
 
-    print!("[Enter index:] "); // User's input should be typed at the end of this prompt (not on the next line)
+    print!("[Enter index:] ");
+    io::stdout().flush().expect("Erroring flushing");
 
     let mut n = String::new();
 
@@ -18,22 +19,21 @@ fn main() {
                 return;
             }
         }
-        Err(err) => {
+        Err(_) => {
             println!("Halt! Not a number.");
             return;
         }
     };
     let n = n + 1;
-    println!("...");
+    println!("");
 
     let mut ans: Vec<u32> = Vec::new();
 
     for i in 0..n {
         let fi = fib(i);
         ans.push(fi);
-        println!("Fibonacci[{i}] = {}", fi);
+        // println!("Fibonacci[{i}] = {}", fi);
     }
-    println!();
 
     let ans: String = ans
         .iter()
